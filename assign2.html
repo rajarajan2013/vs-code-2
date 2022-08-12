@@ -1,0 +1,149 @@
+<head>
+  <title>Pasta Recipes</title>
+  <link href="assign2.css" rel="stylesheet" : />
+</head>
+
+<body>
+  <div class="heading">
+    <h1><center>Welcome to Raja Pasta House</center></h1>
+    <h2>
+      <center><strong>Menu</strong></center>
+    </h2>
+    <br />
+  </div>
+
+  <div id="container" class="container">
+    <div class="item-container">
+      <h3>Creamy pasta with asparagus</h3>
+      <img width="200px;" src="p1.jpg" />
+      <p><b>Ingredients:</b></p>
+      <b>
+        <ul>
+          <li>250g fusilli</li>
+          <li>300g asparagus spear</li>
+          <li>175g frozen pea</li>
+          <li>zest and juice ½ lemon</li>
+          <li>100g soft cheese</li>
+        </ul>
+      </b>
+
+      <button class="remove-button">Remove</button>
+    </div>
+
+    <div class="item-container">
+      <h3>Cacio e pepe</h3>
+      <img width="200px;" src="p2.jpg" />
+      <p><b>Ingredients:</b></p>
+      <b>
+        <ul>
+          <li>200g bucatini or spaghetti</li>
+          <li>25g butter</li>
+          <li>1 tsp freshly ground black pepper</li>
+          <li>50g pecorino or parmesan</li>
+          <button class="remove-button">Remove</button>
+        </ul>
+      </b>
+    </div>
+
+    <div class="item-container">
+      <h3>Cheesy tuna pesto pasta</h3>
+      <img width="200px;" src="p3.jpg" />
+      <p><b>Ingredients:</b></p>
+      <b>
+        <ul>
+          <li>400g penne</li>
+          <li>200g can yellowfin tuna in olive oil</li>
+          <li>190g jar basil pesto</li>
+          <li>100g cheddar</li>
+          <li>250g punnet cherry tomato</li>
+        </ul>
+        <button class="remove-button">Remove</button>
+      </b>
+    </div>
+
+    <div class="item-container">
+      <h3>Runner bean & prosciutto pasta</h3>
+      <img width="200px;" src="p4.jpg" />
+      <p><b>Ingredients:</b></p>
+      <b>
+        <ul>
+          <li>175g tagliatelle</li>
+          <li>200g runner bean</li>
+          <li>3 slices prosciutto</li>
+          <lli>1 tbsp olive oil</lli>
+          <li>2 rounded tbsp half-fat crème fraîche</li>
+          <button class="remove-button">Remove</button>
+        </ul>
+      </b>
+    </div>
+
+    <div class="item-container">
+      <h3>Asparagus pasta with mint pesto</h3>
+      <img width="200px;" src="p5.jpg" />
+      <p><b>Ingredients:</b></p>
+      <b>
+        <ul>
+          <li>large bunch mint (about 80g)</li>
+          <li>250g tub ricotta</li>
+          <li>25g parmesan</li>
+          <li>400g farfalle</li>
+          <li>200g asparagus tips</li>
+          <button class="remove-button">Remove</button>
+        </ul>
+      </b>
+    </div>
+
+    <div class="item-container">
+      <h3>Salmon & spinach pasta</h3>
+      <img width="200px;" src="p6.jpg" />
+      <p><b>Ingredients:</b></p>
+      <b>
+        <ul>
+          <li>200g penne</li>
+          <li>2 skinless salmon fillets</li>
+          <li>60g sundried tomatoes</li>
+          <li>80g bag spinach</li>
+          <button class="remove-button">Remove</button>
+        </ul>
+      </b>
+    </div>
+  </div>
+
+  <div style="margin: 20px">
+    <input id="inputbox" type="text" />
+    <button>Add Item</button>
+  </div>
+</body>
+
+<script>
+  function removeItem(event) {
+    event.target.parentElement.remove();
+  }
+
+  let removeButtons = document.getElementsByClassName("remove-button");
+
+  for (let i = 0; i < removeButtons.length; i++) {
+    removeButtons[i].addEventListener("click", removeItem);
+  }
+
+  function addItem() {
+    let itemToAdd = document.getElementById("inputbox").value;
+    let htmlToAdd = `
+      <div class="item-container">
+          <h3>${itemToAdd}</h3>
+          <button onclick = "removeItem('${itemToAdd}')">Remove</button>
+      </div>`;
+
+    let newElement = document.createElement("div");
+    newElement.innerHTML = htmlToAdd;
+
+    document.getElementById("container").appendChild(newElement);
+
+    document.getElementById("container").innerHTML += `
+      <div class="item-container">
+      <div class="title">${itemToAdd}</div>
+      <button onclick = "removeItem('${itemToAdd}')">Remove</button>
+      </div>
+      `;
+  }
+</script>
